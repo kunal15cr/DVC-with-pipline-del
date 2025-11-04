@@ -43,8 +43,8 @@ def load_params(param_path: str) -> dict:
 
 def load_data():
     try:
-        train_data = pd.read_csv("./data/features/train_bow.csv")
-        test_data = pd.read_csv("./data/features/test_bow.csv")
+        train_data = pd.read_csv("./data/features/train_tfidf.csv")
+        test_data = pd.read_csv("./data/features/test_tfidf.csv")
     except FileNotFoundError:
         logger.exception("Feature files not found under data/features")
         raise

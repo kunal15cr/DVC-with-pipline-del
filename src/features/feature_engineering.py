@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import os
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -64,7 +64,7 @@ def data_vectorization(train_data, test_data, max_features):
         if len([s for s in x_train if s and str(s).strip()]) == 0:
             raise RuntimeError("No non-empty training documents found in processed training data")
 
-        vectorizer = CountVectorizer(max_features=max_features)
+        vectorizer = TfidfVectorizer(max_features=max_features)
         x_train_bow = vectorizer.fit_transform(x_train)
         x_test_bow = vectorizer.transform(x_test)
         feature_names = vectorizer.get_feature_names_out()
@@ -90,8 +90,8 @@ def save_data(train_df, test_df):
     data_path = os.path.join("data", "features")
     try:
         os.makedirs(data_path, exist_ok=True)
-        train_df.to_csv(os.path.join(data_path, "train_bow.csv"), index=False)
-        test_df.to_csv(os.path.join(data_path, "test_bow.csv"), index=False)
+        train_df.to_csv(os.path.join(data_path, "train_tfidf.csv"), index=False)
+        test_df.to_csv(os.path.join(data_path, "test_tfidf.csv"), index=False)
         logger.info("Feature files written to %s", data_path)
     except Exception:
         logger.exception("Failed to save feature files to %s", data_path)

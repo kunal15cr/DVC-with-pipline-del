@@ -66,7 +66,7 @@ def save_metrics(metrics: dict, out_path: str = "metrics.json"):
 
 def main():
     try:
-        test_path = os.path.join("data", "features", "test_bow.csv")
+        test_path = os.path.join("data", "features", "test_tfidf.csv")
         model_path = os.path.join("data", "gradient_boosting_model.pkl")
         metrics_path = "metrics.json"
 
