@@ -1,0 +1,4 @@
+[core]
+    remote = mydvc
+['remote "mydvc"']
+    url = C:\Users\kunal\AppData\Local\Temp
